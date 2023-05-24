@@ -4,9 +4,15 @@ const app = express()
 const cors = require('cors')
 app.use(cors())
 
-const morgan = require('morgan')
-app.use(morgan('tiny'))
+const morgan = require('morgan');
 
+morgan.token('fullUrl', function (req) {
+  return req.protocol + '://' + req.get('host') + req.originalUrl;
+});
+
+morgan.format('myformat', '[:date[iso]] :method :fullUrl :status :response-time ms - :res[content-length]');
+
+app.use(morgan('myformat'));
 const UDF = require('./udf')
 const udf = new UDF()
 
@@ -107,7 +113,7 @@ app.use((err, req, res, next) => {
 
 // Listen
 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })

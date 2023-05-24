@@ -2,11 +2,12 @@
 
 Sample implementation of server-side UDF-compatible data source for [Binance exchange](https://www.binance.com/) for [TradingView](https://www.tradingview.com/) [Charting Library](https://www.tradingview.com/HTML5-stock-forex-bitcoin-charting-library/).
 
-## Run
+## Run port reglé deja a 3000
 
 ```
 $ npm install
 $ npm start
+
 ```
 
 Default port is 80.
